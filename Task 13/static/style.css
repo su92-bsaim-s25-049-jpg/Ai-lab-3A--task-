@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0e1117;
+    color: white;
+}
+
+.layout {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background: #161b22;
+    padding: 20px;
+    box-shadow: 2px 0 10px #000;
+}
+
+.sidebar h2 {
+    color: #58a6ff;   /* VS Code blue */
+}
+
+.sidebar label {
+    color: #c9d1d9;
+    font-size: 14px;
+}
+
+.sidebar input,
+.sidebar select {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: 1px solid #30363d;
+    background: #0d1117;
+    color: white;
+}
+
+.sidebar input[type="range"] {
+    accent-color: #58a6ff; /* blue slider */
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #238636; /* VS Code green button style */
+    border: none;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+button:hover {
+    background: #2ea043;
+}
+
+/* MAIN AREA */
+.main {
+    flex: 1;
+    padding: 30px;
+}
+
+h1 {
+    color: #58a6ff;
+}
+
+.card {
+    background: #161b22;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    border: 1px solid #30363d;
+}
+
+/* GRAPH */
+canvas {
+    background: #0d1117;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 1px solid #30363d;
+}
+
+/* TEXT */
+.hint {
+    color: #8b949e;
+}

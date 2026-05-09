@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Student Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <div class="sidebar">
+
+        <h2>Student Input</h2>
+
+        <form method="POST">
+
+            <input name="name" placeholder="Student Name">
+            <input name="roll" placeholder="Roll No">
+
+            <label>Gender</label>
+            <select name="gender">
+                <option>male</option>
+                <option>female</option>
+            </select>
+
+            <label>Parent Education</label>
+            <select name="parent_edu">
+                <option>high school</option>
+                <option>some college</option>
+                <option>bachelor's degree</option>
+                <option>master's degree</option>
+            </select>
+
+            <label>Lunch Type</label>
+            <select name="lunch">
+                <option value="standard">standard</option>
+                <option value="free/reduced">free/reduced</option>
+            </select>
+
+            <label>Test Prep</label>
+            <select name="test_prep">
+                <option>none</option>
+                <option>completed</option>
+            </select>
+
+            <label>Math: <span id="mval">50</span></label>
+            <input type="range" min="0" max="100" name="math" value="50"
+            oninput="mval.innerText=this.value">
+
+            <label>Reading: <span id="rval">50</span></label>
+            <input type="range" min="0" max="100" name="reading" value="50"
+            oninput="rval.innerText=this.value">
+
+            <label>Writing: <span id="wval">50</span></label>
+            <input type="range" min="0" max="100" name="writing" value="50"
+            oninput="wval.innerText=this.value">
+
+            <button type="submit">🚀 Predict</button>
+
+        </form>
+
+    </div>
+
+    <div class="main">
+
+        <h1>🎯 AI Student Performance Dashboard</h1>
+
+        {% if result %}
+
+        <div class="card">
+
+            <h2>Result</h2>
+
+            <p><b>Name:</b> {{ name }}</p>
+            <p><b>Roll:</b> {{ roll }}</p>
+
+            <p><b>Math:</b> {{ result }}</p>
+            <p><b>Average:</b> {{ avg }}</p>
+            <p><b>Status:</b> {{ status }}</p>
+            <p><b>Level:</b> {{ level }}</p>
+
+            <h3>📊 Score Chart</h3>
+
+<canvas id="myChart"></canvas>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Math', 'Reading', 'Writing'],
+            datasets: [{
+                label: 'Scores',
+                data: [{{ result }}, {{ reading }}, {{ writing }}],
+                backgroundColor: [
+                    '#a855f7',
+                    '#c084fc',
+                    '#7c3aed'
+                ],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+</script>
+
+        {% else %}
+
+        <p class="hint">Enter data from sidebar</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
