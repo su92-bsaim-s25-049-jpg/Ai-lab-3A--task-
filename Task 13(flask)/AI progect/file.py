@@ -45,9 +45,9 @@ def index():
 
         avg = (result + reading + writing) / 3
 
-        status = "PASS ✅" if avg >= 50 else "FAIL ❌"
+        status = "PASS " if avg >= 50 else "FAIL "
 
-        level = "High 🔥" if avg > 75 else "Medium 🙂" if avg > 50 else "Low ⚠️"
+        level = "High " if avg > 75 else "Medium " if avg > 50 else "Low "
 
         return render_template(
             "index.html",
